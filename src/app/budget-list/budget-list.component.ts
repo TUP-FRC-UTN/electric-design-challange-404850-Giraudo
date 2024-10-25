@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Budget } from '../models/budget';
 
 @Component({
   selector: 'app-budget-list',
@@ -17,4 +18,6 @@ export class BudgetListComponent {
     - https://angular.dev/guide/http/making-requests#best-practices (async pipe)
     - https://angular.dev/guide/testing/components-scenarios#example-17 (async pipe)
   */
+
+    budgets: Budget[] = [];
 }
