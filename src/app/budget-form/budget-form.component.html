@@ -2,3 +2,50 @@
 https://getbootstrap.com/docs/5.3/forms/form-control/#example
 https://getbootstrap.com/docs/5.3/forms/select/#default
 https://getbootstrap.com/docs/5.3/forms/select/#default -->
+
+<form [formGroup]="budgetForm" ngSubmit="onSubmit()"  class="row g-3 m-2">
+    
+    <label for="name" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="name">
+
+    
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+
+    <button class="btn btn-outline-primary" (click)="addModuleForm()">Agregar modulo</button>
+    <div formArrayName="moduleForm" class="d-flex">
+        @for(mf of moduleForm.controls; track $index) {
+            <div [formGroupName]="$index" class="flex col-md-6 p-2 m-2">
+                <div class="">
+                    <h6>Módulo #{{ $index + 1 }}</h6>
+                  </div>
+                  <div class="text-end">
+                    <button type="button" class="btn btn-close" (click)="removeModuleForm($index)"></button>
+                  </div>
+                  
+                  <div class="">
+                    <label for="moduleType" class="form-label">Tipo Módulo</label>
+                    <input type="text" formControlName="moduleType" class="form-control" id="moduleType" placeholder="Tipo Módulo">
+                  </div>
+          
+                  <div class="">
+                    <label for="rooms" class="form-label">Ambiente</label>
+                    <input type="text" formControlName="rooms" class="form-control" id="rooms" placeholder="Ambiente">
+                  </div>
+          
+                  <div class="col-md-3">
+                    <label for="price" class="form-label">Precio</label>
+                    <div class="input-group">
+                      <span class="input-group-text">$</span>
+                      <input type="text" formControlName="price" class="form-control" id="price" placeholder="Precio">
+                    </div>
+                  </div>
+          
+                  <div class="col-md-3">
+                    <label for="places" class="form-label">Lugares</label>
+                    <input type="text" formControlName="places" class="form-control" id="places" placeholder="Lugares">
+                  </div>
+            </div>
+        }
+    </div>
+</form>
